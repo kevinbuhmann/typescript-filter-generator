@@ -48,8 +48,18 @@ module.exports = function(input, options) {
         let paramParts = constructorParams[i].trim().split(' ');
         let paramType = paramParts[0];
         let paramName = paramParts[1];
-        tsConstructorParams.push(`private ${paramName}: ${typeTranslation[paramType]}`);
-        filterParams.push(`this.${paramName}`);
+
+        let isArray = paramType.endsWith('[]');
+        if (isArray) { paramType = paramType.replace('[]', ''); }
+
+        let tsType = typeTranslation[paramType];
+        if (isArray) { tsType += '[]'; }
+
+        let filterParam = `this.${paramName}`;
+        if (isArray) { filterParam += `.join(',')`; }
+
+        tsConstructorParams.push(`private ${paramName}: ${tsType}`);
+        filterParams.push(filterParam);
     }
 
     let result = '';
