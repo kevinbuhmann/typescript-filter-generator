@@ -42,11 +42,6 @@ module.exports = function(input, options) {
         constructor = constructorMatch[1];
     }
 
-    console.log(`namespace: ${namespace}`);
-    console.log(`filterName: ${filterName}`);
-    console.log(`filterType: ${filterType}`);
-    console.log(`constructor: ${constructor}`);
-
     let tsConstructorParams = [], filterParams = [];
     let constructorParams = constructor.split(',');
     for (let i = 0; i < constructorParams.length; i++) {
