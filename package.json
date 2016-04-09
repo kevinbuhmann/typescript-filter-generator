@@ -1,0 +1,19 @@
+{
+  "name": "typescript-filter-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinphelps/typescript-filter-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinphelps/typescript-filter-generator/issues"
+  },
+  "homepage": "https://github.com/kevinphelps/typescript-filter-generator#readme"
+}
