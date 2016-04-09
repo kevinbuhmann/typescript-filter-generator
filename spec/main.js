@@ -7,7 +7,7 @@ let sampleFile = `namespace Service.Filters.People
         private readonly string name;
         private readonly int age;
 
-        public ByNameFilter(string name, int age)
+        public ByNameAndAgeFilter(string name, int age)
         {
             this.name = name;
             this.age = age;

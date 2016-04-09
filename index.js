@@ -27,17 +27,17 @@ module.exports = function(input, options) {
         namespace = parts[parts.length - 1];
     }
 
-    let filterNameMatch = input.match(new RegExp('class\\s+(.+)Filter\\s+:'));
+    let filterNameMatch = input.match(new RegExp(`class\\s+(.+)Filter\\s+:`));
     if (filterNameMatch) {
         filterName = filterNameMatch[1];
     }
 
-    let filterTypeMatch = input.match(new RegExp('Dmn\\.(.+),'));
+    let filterTypeMatch = input.match(new RegExp(`Dmn\\.(.+),`));
     if (filterTypeMatch) {
         filterType = filterTypeMatch[1];
     }
 
-    let constructorMatch = input.match(new RegExp('public\\s+ByNameFilter\\((.+)\\)'));
+    let constructorMatch = input.match(new RegExp(`public\\s+${filterName}Filter\\((.+)\\)`));
     if (constructorMatch) {
         constructor = constructorMatch[1];
     }
