@@ -68,10 +68,6 @@ module.exports = function(input, options) {
     if (module) { result += `module ${module} {\n` }
 
     result += `${indent}'use strict';\n\n`;
-    result += `${indent}export interface IFilter<T> {\n`;
-    result += `${indent}    getFilterName(): string;\n`;
-    result += `${indent}    getParameters(): string[];\n`;
-    result += `${indent}}\n\n`;
 
     result += `${indent}export class ${namespace}${filterName}Filter implements IFilter<${filterType}> {\n`;
     result += `${indent}    constructor(${tsConstructorParams.join(', ')}) {\n`

@@ -28,11 +28,6 @@ let sampleFile = `namespace Service.Filters.People
 let expectedOutput = `module app {
     'use strict';
 
-    export interface IFilter<T> {
-        getFilterName(): string;
-        getParameters(): string[];
-    }
-
     export class PeopleByNameAndAgeFilter implements IFilter<Person> {
         constructor(private name: string, private age: number) {
         }
