@@ -4,6 +4,7 @@
 		"main.js",
 		"arrayParam.js",
 		"vintage.js",
-		"ignore-comment.js"
+		"ignore-comment.js",
+		"no-parameters.js"
 	]
 }
