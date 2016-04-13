@@ -35,7 +35,7 @@ module.exports = function(input, options) {
 
     let filterClassNameMatch = input.match(new RegExp(`class\\s+(.+)\\s+:`));
     if (filterClassNameMatch) {
-        filterClassName =   filterClassNameMatch[1].endsWith('Filter') ?
+        filterClassName = filterClassNameMatch[1].endsWith('Filter') ?
           filterClassNameMatch[1] : `${filterClassNameMatch[1]}Filter`;
         filterName = filterClassName.replace('Filter', '');
     }
@@ -66,6 +66,7 @@ module.exports = function(input, options) {
 
             let filterParam = `this.${paramName}`;
             if (isArray) { filterParam += `.join(',')`; }
+            else if (tsType != 'string') { filterParam += `.toString()`; }
 
             tsConstructorParams.push(`private ${paramName}: ${tsType}`);
             filterParams.push(filterParam);

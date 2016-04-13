@@ -5,6 +5,7 @@
 		"arrayParam.js",
 		"vintage.js",
 		"ignore-comment.js",
-		"no-parameters.js"
+		"no-parameters.js",
+		"number-parameters.js"
 	]
 }

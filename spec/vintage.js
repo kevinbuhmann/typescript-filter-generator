@@ -38,7 +38,7 @@ let expectedOutput = `module app {
         }
 
         public getParameters(): string[] {
-            return [this.postalCodeId, this.phoneNumber];
+            return [this.postalCodeId.toString(), this.phoneNumber];
         }
     }
 }`;
