@@ -19,6 +19,10 @@ typeTranslation.string = 'string';
 typeTranslation.dynamic = 'any';
 
 module.exports = function(input, options) {
+    if (input.indexOf('ts-filter-ignore') !== -1) {
+        return '';
+    }
+
     let module = options && options.module;
 
     let namespace, filterClassName, filterName, filterType, constructor;

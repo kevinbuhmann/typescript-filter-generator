@@ -3,6 +3,7 @@
 	"spec_files": [
 		"main.js",
 		"arrayParam.js",
-		"vintage.js"
+		"vintage.js",
+		"ignore-comment.js"
 	]
 }
