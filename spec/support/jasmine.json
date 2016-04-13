@@ -2,6 +2,7 @@
 	"spec_dir": "spec",
 	"spec_files": [
 		"main.js",
-		"arrayParam.js"
+		"arrayParam.js",
+		"vintage.js"
 	]
 }

@@ -18,5 +18,8 @@
   "homepage": "https://github.com/kevinphelps/typescript-filter-generator#readme",
   "devDependencies": {
     "jasmine-node": "^1.14.5"
+  },
+  "dependencies": {
+    "pluralize": "^1.2.1"
   }
 }

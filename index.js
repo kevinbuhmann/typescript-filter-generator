@@ -1,5 +1,7 @@
 'use strict';
 
+let pluralize = require('pluralize');
+
 let typeTranslation = {};
 typeTranslation.int = 'number';
 typeTranslation.double = 'number';
@@ -19,7 +21,7 @@ typeTranslation.dynamic = 'any';
 module.exports = function(input, options) {
     let module = options && options.module;
 
-    let namespace, filterName, filterType, constructor;
+    let namespace, filterClassName, filterName, filterType, constructor;
 
     let namespaceMatch = input.match(new RegExp('namespace\\s+(.+)\\s+{'));
     if (namespaceMatch) {
@@ -27,17 +29,19 @@ module.exports = function(input, options) {
         namespace = parts[parts.length - 1];
     }
 
-    let filterNameMatch = input.match(new RegExp(`class\\s+(.+)Filter\\s+:`));
-    if (filterNameMatch) {
-        filterName = filterNameMatch[1];
+    let filterClassNameMatch = input.match(new RegExp(`class\\s+(.+)\\s+:`));
+    if (filterClassNameMatch) {
+        filterClassName =   filterClassNameMatch[1].endsWith('Filter') ?
+          filterClassNameMatch[1] : `${filterClassNameMatch[1]}Filter`;
+        filterName = filterClassName.replace('Filter', '');
     }
 
-    let filterTypeMatch = input.match(new RegExp(`Dmn\\.(.+),`));
+    let filterTypeMatch = input.match(new RegExp(`Dmn\\.(\\w+),`));
     if (filterTypeMatch) {
         filterType = filterTypeMatch[1];
     }
 
-    let constructorMatch = input.match(new RegExp(`public\\s+${filterName}Filter\\((.+)\\)`));
+    let constructorMatch = input.match(new RegExp(`public\\s+${filterName}(?:Filter)?\\((.+)\\)`));
     if (constructorMatch) {
         constructor = constructorMatch[1];
     }
@@ -69,7 +73,7 @@ module.exports = function(input, options) {
 
     result += `${indent}'use strict';\n\n`;
 
-    result += `${indent}export class ${namespace}${filterName}Filter implements IFilter<${filterType}> {\n`;
+    result += `${indent}export class ${pluralize(namespace)}${filterClassName} implements IFilter<${filterType}> {\n`;
     result += `${indent}    constructor(${tsConstructorParams.join(', ')}) {\n`
     result += `${indent}    }\n\n`;
 
