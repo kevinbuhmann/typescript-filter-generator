@@ -6,6 +6,7 @@
 		"vintage.js",
 		"ignore-comment.js",
 		"no-parameters.js",
-		"number-parameters.js"
+		"number-parameters.js",
+		"dto-namespace-option.js"
 	]
 }

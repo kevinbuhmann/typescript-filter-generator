@@ -24,6 +24,7 @@ module.exports = function(input, options) {
     }
 
     let module = options && options.module;
+    let dtoNamespace = options && options.dtoNamespace;
 
     let namespace, filterClassName, filterName, filterType, constructor;
 
@@ -42,7 +43,8 @@ module.exports = function(input, options) {
 
     let filterTypeMatch = input.match(new RegExp(`Dmn\\.(\\w+),`));
     if (filterTypeMatch) {
-        filterType = filterTypeMatch[1];
+        filterType = dtoNamespace ?
+          `${dtoNamespace}.${filterTypeMatch[1]}` : filterTypeMatch[1];
     }
 
     let constructorMatch = input.match(new RegExp(`public\\s+${filterName}(?:Filter)?\\((.+)\\)`));
